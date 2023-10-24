@@ -20,13 +20,16 @@ body{
 #dog-card {
     flex-direction: column;
     background-color: white;
-    height: 50vh;
+    height: 45vh;
     width: 25vw;
     border-radius: 1rem;
+    display: flex;
+    margin-top: 1rem;
 
 }
  #dog-card img{
-    height: auto;
+    display: center;
+    height: 100%;
     max-width: 100%;
     object-fit: contain;
 } 
@@ -41,5 +44,7 @@ form {
     width: 25vw;
     border-radius: 1rem;
     margin-top: 1rem;
+
 }
+
 
