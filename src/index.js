@@ -26,7 +26,7 @@ function createBreedList (breedList) {
             ${Object.keys(breedList).map((breed) => {
                 return `<option>${breed}</option>`
             }).join('')}
-       </select>`
+            </select>`
 }
 // londing images by breed
 function loadBreed(breed) {
@@ -34,7 +34,20 @@ function loadBreed(breed) {
         fetch(`https://dog.ceo/api/breed/${breed}/images`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
+            createPic(data.message)
         })
     }
+}
+
+function createPic(img) {
+    document.getElementById('pic').innerHTML = `
+    <div class="pic_pic" style="background-image: url('${img[0]}');"></div>
+   
+    `
+    addEventListener('keydown', () =>{
+        for (const i in img){
+            console.log(img[i])
+            
+        }
+    } )
 }
