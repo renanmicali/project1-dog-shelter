@@ -14,12 +14,15 @@ fetch(url)
 // using map to show list and allow all breeds
 function createBreedList(breedList) {
     // !! 'this' will point to element in question when no other parameter can be used !!
-    // using on change event to select breed
+    // using onchange event to select breed
+    // next step ------ > !!! instead of using onchange, try to use an eventListener function//
+
     list.innerHTML = `
             <select onchange="loadBreed(this.value)" name="" id="opt">
             <option>Choose a Dog Breed To Adopt</option>
             ${Object.keys(breedList).map((breed) => {
         return `<option>${breed}</option>`
+    // creates new strings when used in an array and separate them using ('')
     }).join('')}
             </select>`
 }
@@ -32,12 +35,13 @@ function loadBreed(breed) {
                 createPic(data.message)
                 // event when key down
                 document.addEventListener('keydown', (e) => {
+                    console.log("keydown")
                     if (e.key === "ArrowLeft") {
                         //avoiding arrows to loop select menu
                         e.preventDefault();
                         pressedKey(changePic(data.message))
                         
-                        console.log(changePic(data.message));
+                        // console.log(changePic(data.message));
                     }
                     if (e.key === "ArrowRight") {
                         //avoiding arrows to loop select menu
@@ -72,5 +76,7 @@ function createPic(img) {
 // random pic generator
 function changePic(img) {
     console.log(img[(Math.floor(Math.random() * img.length))])
+
+    return "hello world"
 
 }
