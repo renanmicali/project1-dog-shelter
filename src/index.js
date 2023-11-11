@@ -41,12 +41,12 @@ function loadBreed(breed) {
                         e.preventDefault();
                         pressedKey(changePic(data.message))
                         
-                        // console.log(changePic(data.message));
+                        
                     }
                     if (e.key === "ArrowRight") {
                         //avoiding arrows to loop select menu
                         e.preventDefault()
-                        console.log(changePic(data.message));
+                        pressedKey(changePic(data.message));
                     }
                 })
 
@@ -75,8 +75,7 @@ function createPic(img) {
 
 // random pic generator
 function changePic(img) {
-    console.log(img[(Math.floor(Math.random() * img.length))])
-
-    return "hello world"
+    
+    return img[(Math.floor(Math.random() * img.length))]
 
 }
