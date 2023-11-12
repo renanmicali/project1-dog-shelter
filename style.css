@@ -1,9 +1,8 @@
-
-body{
+body {
     margin: 0;
     font-family: sans-serif;
-    
-   
+
+
 }
 
 /* Basic style  */
@@ -23,6 +22,7 @@ h1 {
 .header {
     text-align: center;
     padding: 20px 0;
+    padding-bottom: 0;
 }
 
 .header h1 {
@@ -35,24 +35,12 @@ h1 {
     font-size: 1.5rem;
 }
 
-.header #left {
-    float: left;
-    margin-left: 15rem;
-    font-size: large;
-}
-
-.header #right {
-    float: right;
-    margin-right: 15rem;
-    font-size: large;
-    
-}
 
 button {
     background-color: rgb(139, 206, 206);
     border-color: rgb(101, 165, 165);
-    border-radius: 0.25rem ;
-    
+    border-radius: 0.25rem;
+
 }
 
 /* styling background to easy be able to fir pictures */
@@ -66,7 +54,7 @@ button {
 
 /* Get picture to fit inside the remaing space and not overflow the div */
 
-.pic_pic{
+.pic_pic {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -75,9 +63,63 @@ button {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    
+
 }
 
 #opt {
     color: rgb(51, 95, 95);
+}
+
+/* styling name giver input and pharse */
+
+#give-name {
+    margin-top: 1rem;
+}
+
+.randomName {
+    font-size: 2rem;
+    color: rgb(12, 29, 44);
+}
+
+.up_pic {
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    opacity: 0.3;
+}
+
+#uNameInput {
+    padding: 7px;
+    border: none;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 0.4rem;
+    width: 250px;
+
+}
+
+#gen-button {
+    background-color: #0c2853a2;
+    /* Green */
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 5px 30px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#gen-button:hover {
+    background-color: #1c7694;
+    color: white
+}
+
+#give-name + p {
+    color: #3a484d;
+    padding: 0 0 0 0 ;
+    margin: 0 0 0 0;
+    margin-top: 10px ;
+}
+.randomName {
+    color: #136c8a;
 }
