@@ -1,20 +1,11 @@
 const url = "https://dog.ceo/api/breeds/list/all"
 const list = document.getElementById('breed')
+// Get a reference to the element that needs an event handler
+let btn = document.getElementById("gen-button");
+let output = document.getElementById("uNameInput");  
+let output2 = document.querySelector(".randomName");
 
-const nameList = [
-	"Max","Buddy","Charlie","Jack","Cooper","Rocky","Toby","Tucker","Jake","Bear",
-	"Duke","Teddy","Oliver","Riley","Bailey","Bentley","Milo","Buster","Cody","Dexter",
-	"Winston","Murphy","Leo","Lucky","Oscar","Louie","Zeus","Henry","Sam","Harley",
-	"Baxter","Gus","Sammy","Jackson","Bruno","Diesel","Jax","Gizmo","Bandit","Rusty",
-	"Marley","Jasper","Brody","Roscoe","Hank","Otis","Bo","Joey","Beau","Ollie","Tank",
-	"Shadow","Peanut","Hunter","Scout","Blue","Rocco","Simba","Tyson","Ziggy","Boomer",
-	"Romeo","Apollo","Ace","Luke","Rex","Finn","Chance","Rudy","Loki","Moose","George",
-	"Samson","Coco","Benny","Thor","Rufus","Prince","Chester","Brutus","Scooter","Chico",
-	"Spike","Gunner","Sparky","Mickey","Kobe","Chase","Oreo","Frankie","Mac","Benji","Bubba",
-	"Champ","Brady","Elvis","Copper","Cash","Archie","Walter"
-]
-
-
+//fetchinh API data
 fetch(url)
     .then(resp => resp.json())
     .then((data) => {
@@ -30,7 +21,7 @@ function createBreedList(breedList) {
 
     list.innerHTML = `
             <select onchange="loadBreed(this.value)" name="" id="opt">
-            <option>Choose a Dog Breed To Adopt</option>
+            <option>Browse by Breed and Name Your Favorite Dog</option>
             ${Object.keys(breedList).map((breed) => {
         return `<option>${breed}</option>`
     // creates new strings when used in an array and separate them using ('')
@@ -46,7 +37,6 @@ function loadBreed(breed) {
                 createPic(data.message)
                 // event when key down
                 document.addEventListener('keydown', (e) => {
-                    console.log("keydown")
                     if (e.key === "ArrowLeft") {
                         //avoiding arrows to loop select menu
                         e.preventDefault();
@@ -65,6 +55,10 @@ function loadBreed(breed) {
     }
 
 }
+
+// Last Listener added
+btn.addEventListener("click", generate);
+
 
 // !!!!! grab array of images to be changed when event is actioned !!!!!!
 function pressedKey(img) {
@@ -91,3 +85,12 @@ function changePic(img) {
 
 }
 
+function generate() {
+    if (output !== "Type Name Here" && true){
+        output2.textContent = output.value
+    } else {
+        alert('Please give your Pet a name')
+    }
+  // doesn't need to "return" anything. It just needs
+  // to set the value of the text field the provided value.
+};
