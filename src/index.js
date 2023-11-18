@@ -100,32 +100,27 @@ function generate() {
 };
 
 // !! modal !!
-const modal = document.getElementById('myModal');
+
+
+let modal = document.getElementById('myModal');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-const img = document.getElementById('myImg');
-const modalImg = document.getElementById("img01");
-const captionText = document.getElementById("caption");
+let divPic = document.querySelector('#pic');
+let imgFinal = document.querySelector('#myImg')
+let modalImg = document.getElementById("img01");
+let captionText = document.getElementById("caption");
+let span = document.getElementsByClassName("close")[0];
+let dogName = document.querySelector('.randomName')
 
-img.addEventListener("click", () => {
+divPic.addEventListener("click", () => {
+    imgFinal = document.querySelector('#myImg')   
     modal.style.display = "block";
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
-    captionText.innerHTML = img.alt;
+    modalImg.src = imgFinal.src;
+    modalImg.alt = imgFinal.alt;
+    captionText.innerHTML = `Your BEST Friend is : ${dogName.innerHTML}`;
 }
 )
-
-// img.onclick = function(){
-//     modal.style.display = "block";
-//     modalImg.src = img.src;
-//     modalImg.alt = img.alt;
-//     captionText.innerHTML = img.alt;
-// }
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+// x button to close modal
+span.addEventListener('click', () => {
   modal.style.display = "none";
-}
+})
