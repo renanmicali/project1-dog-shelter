@@ -40,3 +40,7 @@ I know that I can make many changes in this project.
 One of the main things I would like to do would be to add an account system, where a user can adopt or name a dog and every time this user is back to the website he would see his dog on the main page.
 Also, a system that posts updates about the particular dog. Using POST AND UPDATE requests.
 Basically, it creates a full CRUD application. 
+
+************************************
+
+MENTIONS: 

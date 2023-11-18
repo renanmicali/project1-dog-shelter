@@ -63,7 +63,9 @@ btn.addEventListener("click", generate);
 // !!!!! grab array of images to be changed when event is actioned !!!!!!
 function pressedKey(img) {
     document.getElementById('pic').innerHTML = `
-    <div class="pic_pic" style="background-image: url('${img}');"></div>
+    <div class="pic_pic" >
+        <img id="myImg" src="${img}" alt="">
+    </div>
    
     `
 }
@@ -72,7 +74,9 @@ function pressedKey(img) {
 function createPic(img) {
 
     document.getElementById('pic').innerHTML = `
-    <div class="pic_pic" style="background-image: url('${img[0]}');"></div>
+    <div class="pic_pic" >
+        <img id="myImg" src="${img[0]}" alt="">
+    </div>
    
     `
 
@@ -94,3 +98,34 @@ function generate() {
   // doesn't need to "return" anything. It just needs
   // to set the value of the text field the provided value.
 };
+
+// !! modal !!
+const modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+const img = document.getElementById('myImg');
+const modalImg = document.getElementById("img01");
+const captionText = document.getElementById("caption");
+
+img.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    captionText.innerHTML = img.alt;
+}
+)
+
+// img.onclick = function(){
+//     modal.style.display = "block";
+//     modalImg.src = img.src;
+//     modalImg.alt = img.alt;
+//     captionText.innerHTML = img.alt;
+// }
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}

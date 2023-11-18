@@ -26,8 +26,22 @@
         </header>
         <p class="up_pic"><i>use keyboard arrows (&#8592) (&#8594) to browse dogs</i></p>
         <div id="pic">
-            <div class="pic_pic" style="background-image: url('/images/dog_test.jpg');"></div>
+            <div class="pic_pic">
+                <img id="myImg" src="/images/dog_test.jpg" alt="">
+            </div>
         </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
     </div>
 </body>
 
