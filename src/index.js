@@ -2,7 +2,7 @@ const url = "https://dog.ceo/api/breeds/list/all"
 const list = document.getElementById('breed')
 // Get a reference to the element that needs an event handler
 let btn = document.getElementById("gen-button");
-let output = document.getElementById("uNameInput");  
+let output = document.getElementById("uNameInput");
 let output2 = document.querySelector(".randomName");
 
 //fetchinh API data
@@ -10,7 +10,6 @@ fetch(url)
     .then(resp => resp.json())
     .then((data) => {
         createBreedList(data.message)
-
 
     })
 // using map to show list and allow all breeds
@@ -24,7 +23,7 @@ function createBreedList(breedList) {
             <option>Browse by Breed and Name Your Favorite Dog</option>
             ${Object.keys(breedList).map((breed) => {
         return `<option>${breed}</option>`
-    // creates new strings when used in an array and separate them using ('')
+        // creates new strings when used in an array and separate them using ('')
     }).join('')}
             </select>`
 }
@@ -41,8 +40,8 @@ function loadBreed(breed) {
                         //avoiding arrows to loop select menu
                         e.preventDefault();
                         pressedKey(changePic(data.message))
-                        
-                        
+
+
                     }
                     if (e.key === "ArrowRight") {
                         //avoiding arrows to loop select menu
@@ -84,27 +83,24 @@ function createPic(img) {
 
 // random pic generator
 function changePic(img) {
-    
+
     return img[(Math.floor(Math.random() * img.length))]
 
 }
 
 function generate() {
-    if (output !== "Type Name Here" && true){
+    if (output !== "Type Name Here" && true) {
         output2.textContent = output.value
     } else {
         alert('Please give your Pet a name')
     }
-  // doesn't need to "return" anything. It just needs
-  // to set the value of the text field the provided value.
+    // doesn't need to "return" anything. It just needs
+    // to set the value of the text field the provided value.
 };
 
-// !! modal !!
 
-
+////////////////// !! modal !! ////////////////////////////////////
 let modal = document.getElementById('myModal');
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
 let divPic = document.querySelector('#pic');
 let imgFinal = document.querySelector('#myImg')
 let modalImg = document.getElementById("img01");
@@ -113,14 +109,14 @@ let span = document.getElementsByClassName("close")[0];
 let dogName = document.querySelector('.randomName')
 
 divPic.addEventListener("click", () => {
-    imgFinal = document.querySelector('#myImg')   
+    imgFinal = document.querySelector('#myImg')
     modal.style.display = "block";
     modalImg.src = imgFinal.src;
     modalImg.alt = imgFinal.alt;
-    captionText.innerHTML = `Your BEST Friend is : ${dogName.innerHTML}`;
+    captionText.innerHTML = `Your BEST Friend is: ${dogName.innerHTML}`;
 }
 )
 // x button to close modal
 span.addEventListener('click', () => {
-  modal.style.display = "none";
+    modal.style.display = "none";
 })
