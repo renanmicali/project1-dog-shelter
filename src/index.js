@@ -20,7 +20,7 @@ function createBreedList(breedList) {
 
     list.innerHTML = `
             <select onchange="loadBreed(this.value)" name="" id="opt">
-            <option>Browse by Breed and Name Your Favorite Dog</option>
+            <option>Browse by Dog Breed</option>
             ${Object.keys(breedList).map((breed) => {
         return `<option>${breed}</option>`
         // creates new strings when used in an array and separate them using ('')
@@ -113,7 +113,7 @@ divPic.addEventListener("click", () => {
     modal.style.display = "block";
     modalImg.src = imgFinal.src;
     modalImg.alt = imgFinal.alt;
-    captionText.innerHTML = `Your BEST Friend is: ${dogName.innerHTML}`;
+    captionText.innerHTML = `Your BEST Friend   ${dogName.innerHTML}`;
 }
 )
 // x button to close modal
