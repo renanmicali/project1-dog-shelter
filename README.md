@@ -19,6 +19,12 @@ The changes in the events were :
 * "onChange" (initially added in the index.js file inside the inner HTML)
 * "submit" Giving the dog a name
 
+The last thing added in the project was a modal, the modal was quite easy to be implemented once the majority of the code was done.
+An issue was encountered which i could not bring the image to appear once the onChange event was triggered, reason was that the new image was being placed on top of the on click event. After fixing that, the second problem was getting the actual image that is displayed to appear on the modal, which was fixed by calling the variable inside the eventListener. 
+
+* onClick (open modal)
+* onClick (close modal)
+
 ***************************************************************************************
 STRUGGLES
 
