@@ -1,10 +1,15 @@
 const url = "https://dog.ceo/api/breeds/list/all"
 const list = document.getElementById('breed')
-// Get a reference to the element that needs an event handler
 let btn = document.getElementById("gen-button");
 let output = document.getElementById("uNameInput");
 let output2 = document.querySelector(".randomName");
-
+let modal = document.getElementById('myModal');
+let divPic = document.querySelector('#pic');
+let imgFinal = document.querySelector('#myImg')
+let modalImg = document.getElementById("img01");
+let captionText = document.getElementById("caption");
+let dogName = document.querySelector('.randomName');
+let arrows = document.querySelector(".up_pic")
 //fetchinh API data
 fetch(url)
     .then(resp => resp.json())
@@ -34,7 +39,9 @@ function loadBreed(breed) {
             .then(data => {
                 let imageArray = data.message
                 loadPic(data.message[0])
-                keyDownEvent(imageArray)               
+                keyDownEvent(imageArray)
+                
+                        
             })
     }
 
@@ -42,12 +49,12 @@ function loadBreed(breed) {
 
 function keyDownEvent(array) {
     document.addEventListener('keydown', (e) => {
-        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+       if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
             //avoiding arrows to loop select menu
             e.preventDefault();
             loadPic(changePic(array))
         }
-      
+        
     })
 }
 
@@ -55,13 +62,18 @@ function keyDownEvent(array) {
 
 
 function loadPic(imgUrl) {
-
+    
     document.getElementById('pic').innerHTML = `
     <div class="pic_pic" >
         <img id="myImg" src="${imgUrl}" alt="">
     </div>
    
-    `}
+    `
+    if (imgUrl !== imgFinal){
+        clearDogName()
+        arrows.style.display = "block"
+    } 
+}
 
 // random pic generator
 function changePic(img) {
@@ -87,14 +99,11 @@ function clearDogName(){
 }
 
 
+
 ////////////////// !! modal !! ////////////////////////////////////
-let modal = document.getElementById('myModal');
-let divPic = document.querySelector('#pic');
-let imgFinal = document.querySelector('#myImg')
-let modalImg = document.getElementById("img01");
-let captionText = document.getElementById("caption");
+
 let span = document.getElementsByClassName("close")[0];
-let dogName = document.querySelector('.randomName')
+
 
 divPic.addEventListener("click", () => {
     imgFinal = document.querySelector('#myImg')
