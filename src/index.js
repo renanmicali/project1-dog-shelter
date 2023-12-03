@@ -1,36 +1,44 @@
 const url = "https://dog.ceo/api/breeds/list/all"
 const list = document.getElementById('breed')
+// APP
 let btn = document.getElementById("gen-button");
-let output = document.getElementById("uNameInput");
-let output2 = document.querySelector(".randomName");
-let modal = document.getElementById('myModal');
-let divPic = document.querySelector('#pic');
+let doNameInput = document.getElementById("uNameInput");
 let imgFinal = document.querySelector('#myImg')
-let modalImg = document.getElementById("img01");
-let captionText = document.getElementById("caption");
 let dogName = document.querySelector('.randomName');
 let arrows = document.querySelector(".up_pic")
+// modal
+let modal = document.getElementById('myModal');
+let divPic = document.querySelector('#pic');
+let modalImg = document.getElementById("img01");
+let captionText = document.getElementById("caption");
+let span = document.querySelector("#close");
+
 //fetchinh API data
 fetch(url)
     .then(resp => resp.json())
     .then((data) => {
         createBreedList(data.message)
-        
+
     })
+
 // using map to show list and allow all breeds
 function createBreedList(breedList) {
-    // !! 'this' will point to element in question when no other parameter can be used !!
-    // using onchange event to select breed
-   
     list.innerHTML = `
-            <select onchange="loadBreed(this.value)" name="" id="opt">
+            <select name="" id="opt">
             <option>Browse by Dog Breed</option>
-            ${Object.keys(breedList).map((breed) => { 
+            ${Object.keys(breedList).map((breed) => {
         return `<option>${breed}</option>`
-        
+
     })}
             </select>`
+    // !! 'this' will point to element in question when no other parameter can be used !!
+    // changing the HTML ==> onchange="loadBreed(this.value)" 
+    let selectedOpt = document.querySelector("#opt")
+    selectedOpt.addEventListener("change", (e) => {
+        loadBreed(e.target.value)
+    })
 }
+
 // londing images by breed
 function loadBreed(breed) {
     if (breed != "Choose a Dog Breed To Adopt") {
@@ -40,8 +48,8 @@ function loadBreed(breed) {
                 let imageArray = data.message
                 loadPic(data.message[0])
                 keyDownEvent(imageArray)
-                
-                        
+
+
             })
     }
 
@@ -49,12 +57,12 @@ function loadBreed(breed) {
 
 function keyDownEvent(array) {
     document.addEventListener('keydown', (e) => {
-       if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
             //avoiding arrows to loop select menu
             e.preventDefault();
             loadPic(changePic(array))
         }
-        
+
     })
 }
 
@@ -62,17 +70,17 @@ function keyDownEvent(array) {
 
 
 function loadPic(imgUrl) {
-    
+
     document.getElementById('pic').innerHTML = `
     <div class="pic_pic" >
         <img id="myImg" src="${imgUrl}" alt="">
     </div>
    
     `
-    if (imgUrl !== imgFinal){
+    if (imgUrl !== imgFinal.src) {
         clearDogName()
         arrows.style.display = "block"
-    } 
+    }
 }
 
 // random pic generator
@@ -85,8 +93,9 @@ function changePic(img) {
 btn.addEventListener("click", generate);
 
 function generate() {
-    if (output.value !== "Type Name Here" && output.value !== "") {
-        output2.textContent = output.value
+    if (doNameInput.value !== "Type Name Here" && doNameInput.value !== "") {
+        dogName.textContent = doNameInput.value
+        doNameInput.value = ""
     } else {
         alert('Please give your Pet a name')
     }
@@ -94,16 +103,13 @@ function generate() {
 
 //clearing name
 
-function clearDogName(){
-    return output2.textContent = ""
+function clearDogName() {
+    return dogName.textContent = ""
 }
 
 
 
-////////////////// !! modal !! ////////////////////////////////////
-
-let span = document.getElementsByClassName("close")[0];
-
+// modal 
 
 divPic.addEventListener("click", () => {
     imgFinal = document.querySelector('#myImg')
