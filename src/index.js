@@ -35,12 +35,12 @@ function createBreedList(breedList) {
     // changing the HTML ==> onchange="loadBreed(this.value)" 
     let selectedOpt = document.querySelector("#opt")
     selectedOpt.addEventListener("change", (e) => {
-        loadBreed(e.target.value)
+        loadBreedPic(e.target.value)
     })
 }
 
 // londing images by breed
-function loadBreed(breed) {
+function loadBreedPic(breed) {
     if (breed != "Choose a Dog Breed To Adopt") {
         fetch(`https://dog.ceo/api/breed/${breed}/images`)
             .then(resp => resp.json())
@@ -60,18 +60,27 @@ function keyDownEvent(array) {
         if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
             //avoiding arrows to loop select menu
             e.preventDefault();
-            loadPic(changePic(array))
+            loadPic(randonArrayNumber(array))
         }
 
     })
 }
 
 // Last Listener added
-
+let picDiv = document.getElementById('pic')
 
 function loadPic(imgUrl) {
-
-    document.getElementById('pic').innerHTML = `
+    // for (let i = 0 ; i < 3 ; i++) {
+    //     let newdivs = document.createElement("div")
+    //     let newImages = document.createElement("img")
+    //     newImages.id = "myImg"
+    //     newdivs.className = "pic_pic"
+    //     newImages.src = imgUrl[i]
+    //     newdivs.appendChild(newImages)
+    //     picDiv.append(newdivs)
+        
+    // }
+    picDiv.innerHTML = `
     <div class="pic_pic" >
         <img id="myImg" src="${imgUrl}" alt="">
     </div>
@@ -84,7 +93,7 @@ function loadPic(imgUrl) {
 }
 
 // random pic generator
-function changePic(img) {
+function randonArrayNumber(img) {
     return img[(Math.floor(Math.random() * img.length))]
 }
 
