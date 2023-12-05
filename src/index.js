@@ -41,7 +41,7 @@ function createBreedList(breedList) {
 
 // londing images by breed
 function loadBreedPic(breed) {
-    if (breed != "Choose a Dog Breed To Adopt") {
+    if (breed != "Browse by Dog Breed") {
         fetch(`https://dog.ceo/api/breed/${breed}/images`)
             .then(resp => resp.json())
             .then(data => {
@@ -66,7 +66,6 @@ function keyDownEvent(array) {
     })
 }
 
-// Last Listener added
 let picDiv = document.getElementById('pic')
 
 function loadPic(imgUrl) {
