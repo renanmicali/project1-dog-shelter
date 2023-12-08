@@ -1,8 +1,8 @@
 const url = "https://dog.ceo/api/breeds/list/all"
-const list = document.getElementById('breed')
+let list = document.getElementById('breed')
 // APP
 let btn = document.getElementById("gen-button");
-let doNameInput = document.getElementById("uNameInput");
+let dogNameInput = document.getElementById("uNameInput");
 let imgFinal = document.querySelector('#myImg')
 let dogName = document.querySelector('.randomName');
 let arrows = document.querySelector(".up_pic")
@@ -46,7 +46,7 @@ function loadBreedPic(breed) {
             .then(resp => resp.json())
             .then(data => {
                 let imageArray = data.message
-                loadPic(data.message[0])
+                loadPic(imageArray[0])
                 keyDownEvent(imageArray)
 
 
@@ -92,8 +92,8 @@ function loadPic(imgUrl) {
 }
 
 // random pic generator
-function randonArrayNumber(img) {
-    return img[(Math.floor(Math.random() * img.length))]
+function randonArrayNumber(imgArr) {
+    return imgArr[(Math.floor(Math.random() * imgArr.length))]
 }
 
 //give dog name
@@ -101,9 +101,9 @@ function randonArrayNumber(img) {
 btn.addEventListener("click", generate);
 
 function generate() {
-    if (doNameInput.value !== "Type Name Here" && doNameInput.value !== "") {
-        dogName.textContent = doNameInput.value
-        doNameInput.value = ""
+    if (dogNameInput.value !== "Type Name Here" && dogNameInput.value !== "") {
+        dogName.textContent = dogNameInput.value
+        dogNameInput.value = ""
     } else {
         alert('Please give your Pet a name')
     }
@@ -123,7 +123,6 @@ divPic.addEventListener("click", () => {
     imgFinal = document.querySelector('#myImg')
     modal.style.display = "block";
     modalImg.src = imgFinal.src;
-    modalImg.alt = imgFinal.alt;
     captionText.innerHTML = `Your BEST Friend   ${dogName.innerHTML}`;
 }
 )
