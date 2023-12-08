@@ -11,7 +11,7 @@ let modal = document.getElementById('myModal');
 let divPic = document.querySelector('#pic');
 let modalImg = document.getElementById("img01");
 let captionText = document.getElementById("caption");
-let span = document.querySelector("#close");
+let closeBtn = document.querySelector("#close");
 
 //fetchinh API data
 fetch(url)
@@ -127,6 +127,6 @@ divPic.addEventListener("click", () => {
 }
 )
 // x button to close modal
-span.addEventListener('click', () => {
+closeBtn.addEventListener('click', () => {
     modal.style.display = "none";
 })
